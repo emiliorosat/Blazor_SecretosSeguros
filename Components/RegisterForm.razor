@@ -1,0 +1,44 @@
+
+@using secretsVaul.Models
+@using secretsVaul.Services
+@inject NavigationManager NavigationManager
+@inject IUserService userService
+@inject IJSRuntime runtime
+
+
+<form @onsubmit="handleSubmit">
+    <label for="document">Cedula</label>
+    <input @bind-value="@newUser.Document" required type="text" name="document" id="document" class="form-control">
+    <label for="password">Contraseña</label>
+    <input @bind-value="@newUser.Password" required type="password" min="8" m name="password" id="password" class="form-control">
+    <label for="repassword">Repetir Contraseña</label>
+    <input @bind-value="@_validPassword" required type="password" min="8" name="repassword" id="repassword" class="form-control">
+    <br>
+    <button type="submit" class="btn btn-success">Registrar</button>
+    <button @onclick="cancel" class="btn btn-danger">Cancelar</button>
+</form>
+
+@code {
+
+    private User newUser = new User{
+        Id = Guid.NewGuid()
+    };
+    private string _validPassword;
+
+    private async Task handleSubmit(){
+        if((_validPassword == newUser.Password) 
+        && !String.IsNullOrEmpty(newUser.Password) 
+        && !String.IsNullOrEmpty(newUser.Document))
+        {
+            UserSession datos = await userService.SignUp(newUser);
+            await runtime.InvokeVoidAsync("SaveToken", datos.token);
+            string localUrl = $"/users/{datos.userId}";
+            NavigationManager.NavigateTo(localUrl, true);
+        }
+
+    }
+
+    private void cancel(){
+        NavigationManager.NavigateTo("/");
+    }
+}

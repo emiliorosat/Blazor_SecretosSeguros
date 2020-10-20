@@ -1,0 +1,64 @@
+@using secretsVaul.Services
+
+@inject IJSRuntime Js
+@inject IUserService uService
+@inject NavigationManager NavigationManager
+
+
+@if(ModeInverter){
+    @if(!isAuth){
+        @ChildContent
+    }
+    
+}else{
+    @if(isAuth){
+        @ChildContent
+    }
+}
+ 
+
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public bool buttomControl {get; set;}
+    [Parameter]
+    public bool ModeInverter {get; set;}
+
+    private bool Inverter = false;
+    private bool isAuth=false;
+
+    protected override void OnParametersSet(){  StateHasChanged();  }
+     protected override async Task OnAfterRenderAsync(bool firstRender){
+        if (firstRender){
+            await ValidateSignIn();
+        }
+    }
+
+    private async Task ValidateSignIn(){
+
+        bool state = isAuth;
+        string token = await Js.InvokeAsync<string>("ReadToken");
+        if(token != ""){
+            isAuth = await uService.IsSigned(token);
+            if(!buttomControl && !isAuth){
+                NavigationManager.NavigateTo("/users/iniciar-sesion");
+            }
+        }else{
+            string path = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+            Console.WriteLine(path);
+            if(path != "users/iniciar-sesion" || path != "users/registrar"){
+                if(path == "users/" || path == "users"){
+                    NavigationManager.NavigateTo("/users/iniciar-sesion");
+                }
+            }
+            isAuth = false;
+        }
+        if(state != isAuth){
+            StateHasChanged();
+        }
+
+        
+    } 
+}

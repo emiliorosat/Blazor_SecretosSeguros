@@ -1,0 +1,44 @@
+@using Models
+@using secretsVaul.Services
+@inject IUserService userService
+@inject IJSRuntime runtime
+@inject NavigationManager NavigationManager
+
+
+<form @onsubmit="handleSubmit">
+    <label for="document">Cedula</label>
+    <input @bind-value="@user.Document" required type="text" name="document" id="document" class="form-control">
+    <label for="password">Contraseña</label>
+    <input @bind-value="@user.Password" required type="password" min="8" m name="password" id="password" class="form-control">
+        <br>
+    <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+    <button @onclick="cancel" class="btn btn-danger">Cancelar</button>
+</form>
+
+<Toast Title="Error" Message="Usuario No Registrado" Delay=3000 />
+
+@code {
+    private User user = new User();
+
+    private async Task handleSubmit(){
+        if(!String.IsNullOrEmpty(user.Document) && 
+        !String.IsNullOrEmpty(user.Password)){
+            user.Document = user.Document.Trim();
+            try{
+            UserSession session = await userService.SignIn(user);
+            Console.WriteLine(session.error);
+            if(String.IsNullOrEmpty(session.error)){
+                await runtime.InvokeVoidAsync("SaveToken", session.token);
+                string path = NavigationManager.Uri;
+                string localUrl = $"users/{session.userId}";
+                NavigationManager.NavigateTo(localUrl, true);
+            }
+            }catch(Exception){
+               await runtime.InvokeVoidAsync("ShowToast");
+            }
+        }
+    }
+    private void cancel(){
+        NavigationManager.NavigateTo("/");
+    }
+}

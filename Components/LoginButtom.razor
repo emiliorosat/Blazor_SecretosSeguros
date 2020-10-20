@@ -1,0 +1,20 @@
+@inject IJSRuntime runtime
+@inject NavigationManager NavigationManager
+
+<AuthState buttomControl=true ModeInverter=true >
+    <button class="btn btn-link" @onclick="signIn">Iniciar Sesion</button>
+    <button class="btn btn-link" @onclick="signUp">Registrar</button>
+</AuthState>
+
+
+@code {
+
+    private async Task signUp(){
+        await runtime.InvokeVoidAsync("DeleteToken");
+        NavigationManager.NavigateTo("/users/registrar");
+    }
+    private async Task signIn(){
+        await runtime.InvokeVoidAsync("DeleteToken");
+        NavigationManager.NavigateTo("/users/iniciar-sesion");
+    }
+}

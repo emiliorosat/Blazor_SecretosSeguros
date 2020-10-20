@@ -1,0 +1,7 @@
+[Dd]ebug
+
+node_modules/
+
+Pages/Counter.razor
+Pages/FetchData.razor
+Data/*

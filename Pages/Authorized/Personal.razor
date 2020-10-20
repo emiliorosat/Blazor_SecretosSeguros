@@ -1,0 +1,44 @@
+@page "/users"
+@page "/users/{userId}"
+@using Models
+@using secretsVaul.Components
+@using secretsVaul.Services
+
+@inject IUserService uService
+<AuthState  >
+    <div class="row">
+
+    <div class="col-7">
+@if(_userHuman != null){
+    <div class="d-flex">
+        <img class="mr-3" src="@_userHuman.Image" alt="Foto">
+        <H2>Bienvenido <br>
+            @_userHuman.Name <br>
+            @_userHuman.LastName</H2>
+    </div>
+    <hr/>
+}
+        <ListSecret />
+    </div>
+    <div class="col-5">
+        <h2> Registrar Nuevo Secreto</h2>
+        <RegSecrets />
+    </div>
+    </div>
+
+</AuthState>
+
+@code {
+    [Parameter]
+    public string userId {get; set;}
+
+    Person _userHuman;
+    protected override async void OnParametersSet(){ 
+        try{
+            _userHuman = await uService.GetHumanData(userId);
+        }catch(Exception){
+            
+        }
+    }
+  
+}

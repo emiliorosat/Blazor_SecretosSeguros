@@ -1,0 +1,14 @@
+@inject IJSRuntime runtime
+@inject NavigationManager NavigationManager
+
+<AuthState buttomControl=true ModeInverter=false >
+    <button class="btn btn-link" @onclick="signOut">Cerrar Sesion</button>
+</AuthState>
+
+
+@code {
+    private async Task signOut(){
+        await runtime.InvokeVoidAsync("DeleteToken");
+        NavigationManager.NavigateTo("/", true);
+    }
+}

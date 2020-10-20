@@ -1,0 +1,19 @@
+﻿@using secretsVaul.Components
+@inherits LayoutComponentBase
+
+<!--/*
+<div class="sidebar">
+    <NavMenu />
+</div>
+*/-->
+<div class="main">
+    <div class="top-row px-4">
+        <LoginButtom />
+        <LogoutButtom />
+        <a href="https://emiliort.com" target="_blank">About</a>
+    </div>
+
+    <div class="container p-4">
+        @Body
+    </div>
+</div>
