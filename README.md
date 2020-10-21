@@ -1,4 +1,10 @@
-# VaulDeSecretosBlazorServerEFSqlite
+# Vaul De Secretos 
+
+-Blazor Server 
+-Entity Framework 
+-Sqlite
+-JWT
+-Bcrypt
 
 ## pasos para iniciar el proyecto
  1. Descargar e instalar dotnet core <https://dotnet.microsoft.com/download> 
