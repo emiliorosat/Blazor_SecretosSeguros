@@ -9,6 +9,6 @@ namespace secretsVaul.Models
         public DbSet<Coord> Coords {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=Data/app.db");
+            => options.UseSqlite("Data Source=app.db");
     }
 }
