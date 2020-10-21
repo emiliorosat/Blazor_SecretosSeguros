@@ -12,9 +12,10 @@
 @if(_userHuman != null){
     <div class="d-flex">
         <img class="mr-3" src="@_userHuman.Image" alt="Foto">
-        <H2>Bienvenido <br>
+        <h2>Bienvenido <br>
             @_userHuman.Name <br>
-            @_userHuman.LastName</H2>
+            @_userHuman.LastName
+        </h2>
     </div>
     <hr/>
 }
@@ -25,7 +26,11 @@
         <RegSecrets />
     </div>
     </div>
-
+</AuthState>
+<AuthState ModeInverter=true >
+   <h1>
+    Si ya eres Usuario <a href="/users/iniciar-sesion">Inicia Sesion</a>, de lo contrario <a href="/users/registrar">Registrate</a>.
+   </h1> 
 </AuthState>
 
 @code {

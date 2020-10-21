@@ -1,7 +1,6 @@
 [Dd]ebug
 
 node_modules/
+bin
+*.db
 
-Pages/Counter.razor
-Pages/FetchData.razor
-Data/*

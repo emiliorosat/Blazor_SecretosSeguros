@@ -21,7 +21,6 @@ namespace secretsVaul.Services
         public Task<bool> IsSigned(string _token)
         {
             Token validToken = token.ValidateToken(_token);
-            Console.WriteLine(validToken.message);
             bool isValid = validToken.status? true : false ;
             return Task.FromResult(isValid);
         }
@@ -32,7 +31,14 @@ namespace secretsVaul.Services
             userSigned = db.Users
             .Where(u => u.Document.Equals(user.Document))
             .FirstOrDefault();
-            bool validPassword = BCrypt.Net.BCrypt.Verify(user.Password, userSigned.Password);
+
+            bool validPassword;
+
+            if(userSigned != null){
+                validPassword = BCrypt.Net.BCrypt.Verify(user.Password, userSigned.Password);
+            }else{
+                validPassword = false;
+            }
 
             UserSession newSession;
 
@@ -55,7 +61,6 @@ namespace secretsVaul.Services
         {
             nUser.Password = EncryptPassword(nUser.Password);
             Person UserData = await fetch.GetDataByDocument(nUser);
-            //string hasToken = token.CreateToken(nUser);
             UserSession session = new UserSession{
                 userId = UserData.UserId,
                 token = token.CreateToken(nUser.Id)

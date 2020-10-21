@@ -17,3 +17,7 @@ function ReadToken(){
 function DeleteToken(){
     localStorage.removeItem("token")
 }
+
+function RefreshWindow(){
+    setTimeout(()=>window.location.reload() ,3000)
+}

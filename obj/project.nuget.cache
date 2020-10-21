@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KmFZyW8nv+cZgvNr+7M8Ig31olHbRtmhTwdm57Gde/sATPuF4EEPNCC3X94Ep6tPZU41qIUjyV1qMMzXzGeidw==",
+  "dgSpecHash": "Z2u2CfWOJPWyzbj8UZciWG34qUfreZ4wptMxNkUgvATS4BnhDdlhLGwV1AgOKUcgYWf0TrQm4u+YBNbvgqE49g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aaron\\itla_code\\blazorCode\\secretsVaul\\secretsVaul.csproj",
+  "projectFilePath": "C:\\www\\retry\\VaulDeSecretosBlazorServerEFSqlite\\secretsVaul.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aaron\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\jwt\\7.2.1\\jwt.7.2.1.nupkg.sha512",
@@ -32,6 +32,7 @@
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.9\\microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\3.1.9\\microsoft.entityframeworkcore.sqlite.3.1.9.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\3.1.9\\microsoft.entityframeworkcore.sqlite.core.3.1.9.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.9\\microsoft.entityframeworkcore.tools.3.1.9.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.9\\microsoft.extensions.caching.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.9\\microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",

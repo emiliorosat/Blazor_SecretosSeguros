@@ -47,7 +47,6 @@
             }
         }else{
             string path = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-            Console.WriteLine(path);
             if(path != "users/iniciar-sesion" || path != "users/registrar"){
                 if(path == "users/" || path == "users"){
                     NavigationManager.NavigateTo("/users/iniciar-sesion");
