@@ -8,7 +8,7 @@
 
 ## pasos para iniciar el proyecto
 
- 1. Descargar e instalar dotnet core <https://dotnet.microsoft.com/download>
+ 1. [Descargar](https://dotnet.microsoft.com/download) e instalar dotnet core
  2. Clonar repositorio
 ```bash
 git clone repo
